@@ -1,0 +1,60 @@
+{
+    "/api/analytics/monthly-sales/": [
+        {
+            "month": "2026-03-01 00:00:00+05:30",
+            "total_sales": 63
+        }
+    ],
+    "/api/analytics/stock-distribution/": {
+        "error": "HTTP Error 500: Internal Server Error",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\DELL\\Desktop\\jango_react_inventory\\backend\\dump_dashboard_data.py\", line 19, in <module>\n    response = urllib.request.urlopen(req)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\DELL\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\urllib\\request.py\", line 215, in urlopen\n    return opener.open(url, data, timeout)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\DELL\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\urllib\\request.py\", line 521, in open\n    response = meth(req, response)\n               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\DELL\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\urllib\\request.py\", line 630, in http_response\n    response = self.parent.error(\n               ^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\DELL\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\urllib\\request.py\", line 559, in error\n    return self._call_chain(*args)\n           ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\DELL\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\urllib\\request.py\", line 492, in _call_chain\n    result = func(*args)\n             ^^^^^^^^^^^\n  File \"C:\\Users\\DELL\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\urllib\\request.py\", line 639, in http_error_default\n    raise HTTPError(req.full_url, code, msg, hdrs, fp)\nurllib.error.HTTPError: HTTP Error 500: Internal Server Error\n"
+    },
+    "/api/analytics/top-products/": [
+        {
+            "product_name": "Whole Wheat Bread",
+            "total_sold": 11
+        },
+        {
+            "product_name": "Organic Milk",
+            "total_sold": 9
+        },
+        {
+            "product_name": "Denim Jeans",
+            "total_sold": 9
+        },
+        {
+            "product_name": "Fresh Apples",
+            "total_sold": 8
+        },
+        {
+            "product_name": "Smartphone X",
+            "total_sold": 7
+        }
+    ],
+    "/api/products/low_stock/": [
+        {
+            "id": 15,
+            "supplier_name": "suppuser1",
+            "name": "Wireless Mouse",
+            "description": "Bluetooth wireless mouse",
+            "price": "2000.00",
+            "stock": 12,
+            "minimum_stock_level": 15,
+            "image": null,
+            "is_available": true,
+            "created_at": "2026-03-29T13:09:07.405159+05:30",
+            "updated_at": "2026-03-29T13:57:15.991185+05:30",
+            "category": 4,
+            "supplier": 11
+        }
+    ],
+    "/api/products/restock_recommendations/": [
+        {
+            "product_id": 15,
+            "product_name": "Wireless Mouse",
+            "current_stock": 12,
+            "predicted_demand": 17,
+            "recommended_restock_quantity": 5
+        }
+    ]
+}
