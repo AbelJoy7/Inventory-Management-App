@@ -1,9 +1,9 @@
-import pandas as pd
-from sklearn.linear_model import LinearRegression
 from orders.models import OrderItem
 
 
 def predict_product_demand(product_id):
+    import pandas as pd
+    from sklearn.linear_model import LinearRegression
 
     orders = OrderItem.objects.filter(product_id=product_id)
 

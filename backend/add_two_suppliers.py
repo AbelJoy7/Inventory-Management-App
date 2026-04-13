@@ -5,8 +5,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 django.setup()
 
 from suppliers.models import Supplier
-from categories.models import Category
-from products.models import Product
+from products.models import Product, Category
 
 def create_suppliers_and_data():
     supp1, _ = Supplier.objects.get_or_create(

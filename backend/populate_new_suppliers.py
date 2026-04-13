@@ -8,8 +8,7 @@ django.setup()
 
 from django.utils import timezone
 from suppliers.models import Supplier
-from categories.models import Category
-from products.models import Product
+from products.models import Category, Product
 from orders.models import Order, OrderItem
 from inventory.models import Inventory
 from accounts.models import CustomUser
@@ -88,10 +87,10 @@ def populate():
             price = cp.price
             total += price * qty
             
-            OrderItem.objects.create(order=order, product=cp, quantity=qty, price=price)
-            Inventory.objects.create(product=cp, quantity=qty, transaction_type='OUT', reference=f'Order #{order.id}')
-            cp.stock = max(0, cp.stock - qty)
-            cp.save()
+            if cp.stock >= qty:
+                OrderItem.objects.create(order=order, product=cp, quantity=qty, price=price)
+                Inventory.objects.create(product=cp, quantity=qty, transaction_type='OUT', reference=f'Order #{order.id}')
+                cp.refresh_from_db()
             
         order.total_amount = total
         order.save()
