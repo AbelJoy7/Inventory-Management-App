@@ -17,8 +17,8 @@ function App() {
   // If there's no role (not logged in), redirect everyone to login pages
   // (Unless they are already on /login to prevent infinite loops)
   if (!role && currentPath !== "/login") {
-     window.location.href = "/login";
-     return null;
+    window.location.href = "/login";
+    return null;
   }
 
   if (currentPath === "/login") {
@@ -76,15 +76,15 @@ function App() {
         </div>
         <nav className="sidebar-nav">
           <a href="/" className={`nav-item ${currentPath === '/' ? 'active' : ''}`}>Dashboard</a>
-          
+
           <a href="/products" className={`nav-item ${currentPath === '/products' ? 'active' : ''}`}>Products</a>
-          
+
           <a href="/inventory" className={`nav-item ${currentPath === '/inventory' ? 'active' : ''}`}>Inventory Logs</a>
-          
+
           {role === 'ADMIN' && (
             <a href="/accounts" className={`nav-item ${currentPath === '/accounts' ? 'active' : ''}`}>Accounts</a>
           )}
-          
+
           {role !== 'SUPPLIER' && (
             <a href="/categories" className={`nav-item ${currentPath === '/categories' ? 'active' : ''}`}>Categories</a>
           )}
@@ -94,10 +94,17 @@ function App() {
           )}
 
           <a href="/orders" className={`nav-item ${currentPath === '/orders' ? 'active' : ''}`}>Orders</a>
-          
 
 
-          <a href="#" onClick={handleLogout} className="nav-item" style={{ marginTop: 'auto', color: '#dc2626' }}>Logout</a>
+
+          <button
+            onClick={handleLogout}
+            className="nav-item logout-btn"
+            style={{ marginTop: 'auto', color: '#dc2626', background: 'none', border: 'none', cursor: 'pointer' }}
+          >
+            Logout
+          </button>
+
         </nav>
       </aside>
       <main className="main-content">
