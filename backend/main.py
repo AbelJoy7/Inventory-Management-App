@@ -1,17 +1,17 @@
 from fastapi import FastAPI
-from backend.database import engine
-from backend import models
-from fastapi import FastAPI
-from backend.database import engine
-from backend import models
 from fastapi.middleware.cors import CORSMiddleware
+from backend.database import engine
+from backend import models
 
 print("✅ MODELS LOADED")
 
+# ✅ Create app ONLY ONCE
 app = FastAPI()
+
+# ✅ CORS
 origins = [
     "http://localhost:3000",
-    "https://inventory-management-app-5lj8-ancjpxccl.vercel.app",  # replace this
+    "https://inventory-management-app-5lj8-ancjpxccl.vercel.app"
 ]
 
 app.add_middleware(
@@ -22,10 +22,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ✅ Routes
 @app.get("/")
 def read_root():
     return {"message": "Backend is running 🚀"}
-
-print("✅ MODELS LOADED")
-
-app = FastAPI()
