@@ -12,3 +12,5 @@ djongo
 pymongo
 uvicorn
 fastapi
+psycopg2-binary
+SQLAlchemy

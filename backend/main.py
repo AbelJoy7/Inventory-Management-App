@@ -65,3 +65,12 @@ def login(data: LoginRequest, db: Session = Depends(get_db)):
         "message": "Login successful",
         "username": user.username
     }
+
+    from database import SessionLocal
+import models
+
+db = SessionLocal()
+test_user = models.User(username="admin", password="admin123")
+db.add(test_user)
+db.commit()
+db.close()
