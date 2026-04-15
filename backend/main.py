@@ -1,6 +1,7 @@
 from fastapi import FastAPI
+from backend.database import engine
 
-print("🔥 APP STARTED")
+print("✅ DATABASE LOADED")
 
 app = FastAPI()
 
