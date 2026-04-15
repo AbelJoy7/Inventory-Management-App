@@ -8,9 +8,6 @@ pytz
 sqlparse
 psycopg2-binary
 python-dotenv
-djongo
-pymongo
-uvicorn
-fastapi
-psycopg2-binary
-SQLAlchemy
+gunicorn
+dj-database-url
+whitenoise
