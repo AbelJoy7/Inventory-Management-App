@@ -1,5 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from database import engine, Base, SessionLocal
+import models
+from fastapi import Depends
+from sqlalchemy.orm import Session
+
 
 app = FastAPI()
 
@@ -26,3 +31,37 @@ def read_root():
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+Base.metadata.create_all(bind=engine)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+        
+app = FastAPI()
+from pydantic import BaseModel
+
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+
+@app.post("/login")
+def login(data: LoginRequest, db: Session = Depends(get_db)):
+    # Find user in DB
+    user = db.query(models.User).filter(models.User.username == data.username).first()
+
+    # Check user exists
+    if not user:
+        raise HTTPException(status_code=401, detail="User not found")
+
+    # Check password
+    if user.password != data.password:
+        raise HTTPException(status_code=401, detail="Incorrect password")
+
+    return {
+        "message": "Login successful",
+        "username": user.username
+    }
