@@ -21,7 +21,8 @@ function Login() {
 
     try {
       // Intentionally using raw axios to avoid interceptor issues before login is complete
-      const res = await axios.post("http://127.0.0.1:8000/api/token/", credentials);
+      const baseURL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000/api/";
+      const res = await axios.post(`${baseURL}token/`, credentials);
       
       // Store the tokens
       localStorage.setItem("access_token", res.data.access);
