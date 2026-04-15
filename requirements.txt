@@ -12,3 +12,5 @@ gunicorn
 dj-database-url
 whitenoise
 Pillow
+pandas
+scikit-learn
